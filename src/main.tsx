@@ -28,13 +28,13 @@ const theme = extendTheme({
 // biome-ignore lint/style/noNonNullAssertion: <explanation>
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <CssVarsProvider disableTransitionOnChange>
-      <CssBaseline />
-      <Suspense fallback={<FallbackView />}>
-        <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
+      <CssVarsProvider disableTransitionOnChange>
+        <CssBaseline />
+        <Suspense fallback={<FallbackView />}>
           <App />
-        </ThemeProvider>
-      </Suspense>
-    </CssVarsProvider>
+        </Suspense>
+      </CssVarsProvider>
+    </ThemeProvider>
   </StrictMode>
 )
