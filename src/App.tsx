@@ -19,7 +19,11 @@ const App: React.FC<React.HTMLAttributes<HTMLDivElement>> = () => {
   }, [])
 
   return (
-    <Box>
+    <Box
+      sx={{
+        fontFamily: 'Kosugi Maru'
+      }}
+    >
       <Header />
       <Sidebar />
     </Box>

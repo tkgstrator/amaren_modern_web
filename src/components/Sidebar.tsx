@@ -22,7 +22,7 @@ import {
 import { useTranslation } from 'react-i18next'
 
 const Sidebar: React.FC = () => {
-  const { t } = useTranslation(['labels'])
+  const { t } = useTranslation(['labels', 'routes'])
   return (
     <Sheet
       className='Sidebar'
@@ -112,7 +112,7 @@ const Sidebar: React.FC = () => {
             <ListItemButton>
               <DashboardRounded />
               <ListItemContent>
-                <Typography level='title-sm'>Dashboard</Typography>
+                <Typography level='title-sm'>{t('search', { ns: 'routes' })}</Typography>
               </ListItemContent>
             </ListItemButton>
           </ListItem>
