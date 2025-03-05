@@ -5,7 +5,7 @@
   },
   "linter": {
     "enabled": true,
-    "ignore": ["**/k-p/**"],
+    "ignore": ["**/node_modules/**"],
     "rules": {
       "recommended": true,
       "correctness": {
@@ -17,7 +17,7 @@
   "formatter": {
     "enabled": true,
     "formatWithErrors": false,
-    "ignore": ["**/k-p/**"],
+    "ignore": ["**/node_modules/**"],
     "attributePosition": "auto",
     "indentStyle": "space",
     "indentWidth": 2,

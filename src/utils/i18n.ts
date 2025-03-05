@@ -12,6 +12,8 @@ i18n.use(initReactI18next).init({
   },
   lng: 'ja',
   fallbackLng: 'ja',
+  ns: ['labels'],
+  defaultNS: 'labels',
   interpolation: {
     escapeValue: false
   }
