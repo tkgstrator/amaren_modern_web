@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import './utils/i18n'
-import { CssBaseline, CssVarsProvider, ThemeProvider, extendTheme } from '@mui/joy'
+import { CssBaseline, CssVarsProvider, GlobalStyles } from '@mui/joy'
 import dayjs from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
 import timezone from 'dayjs/plugin/timezone'
@@ -15,26 +15,22 @@ dayjs.extend(timezone)
 dayjs.extend(customParseFormat)
 dayjs.tz.setDefault('Asia/Tokyo')
 
-const theme = extendTheme({
-  components: {
-    JoyTypography: {
-      defaultProps: {
-        fontFamily: 'Kosugi Maru'
-      }
-    }
-  }
-})
-
 // biome-ignore lint/style/noNonNullAssertion: <explanation>
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ThemeProvider theme={theme}>
-      <CssVarsProvider disableTransitionOnChange>
-        <CssBaseline />
-        <Suspense fallback={<FallbackView />}>
-          <App />
-        </Suspense>
-      </CssVarsProvider>
-    </ThemeProvider>
+    <CssVarsProvider>
+      <CssBaseline />
+      <GlobalStyles
+        styles={{
+          html: {
+            fontFamily: 'Kosugi Maru',
+            userSelect: 'none'
+          }
+        }}
+      />
+      <Suspense fallback={<FallbackView />}>
+        <App />
+      </Suspense>
+    </CssVarsProvider>
   </StrictMode>
 )
