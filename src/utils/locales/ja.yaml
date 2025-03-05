@@ -1,2 +1,5 @@
 labels:
   title: アマ連
+  # search: 検索
+routes:
+  search: 検索
