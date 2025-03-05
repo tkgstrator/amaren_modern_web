@@ -1,38 +1,28 @@
 import {
   BrightnessAutoRounded,
-  CloseRounded,
   DashboardRounded,
   HomeRounded,
-  LogoutRounded,
   QuestionAnswerRounded,
-  SearchRounded,
   SettingsRounded,
   ShoppingCartRounded,
   SupportRounded
 } from '@mui/icons-material'
 import {
-  Avatar,
   Box,
-  Button,
-  Card,
   Chip,
-  Divider,
   GlobalStyles,
   IconButton,
-  Input,
-  LinearProgress,
   List,
   ListItem,
   ListItemButton,
   ListItemContent,
   Sheet,
-  Stack,
   Typography
 } from '@mui/joy'
 import { useTranslation } from 'react-i18next'
 
 const Sidebar: React.FC = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation(['labels'])
   return (
     <Sheet
       className='Sidebar'
@@ -89,10 +79,9 @@ const Sidebar: React.FC = () => {
         <IconButton variant='soft' color='primary' size='sm'>
           <BrightnessAutoRounded />
         </IconButton>
-        <Typography level='title-lg'>{t('labels.title')}</Typography>
+        <Typography level='title-lg'>{t('title')}</Typography>
         {/* <ColorSchemeToggle sx={{ ml: 'auto' }} /> */}
       </Box>
-      <Input size='sm' startDecorator={<SearchRounded />} placeholder='Search' />
       <Box
         sx={{
           minHeight: 0,
@@ -172,34 +161,6 @@ const Sidebar: React.FC = () => {
             </ListItemButton>
           </ListItem>
         </List>
-        <Card invertedColors variant='soft' color='warning' size='sm' sx={{ boxShadow: 'none' }}>
-          <Stack direction='row' sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
-            <Typography level='title-sm'>Used space</Typography>
-            <IconButton size='sm'>
-              <CloseRounded />
-            </IconButton>
-          </Stack>
-          <Typography level='body-xs'>Your team has used 80% of your available space. Need more?</Typography>
-          <LinearProgress variant='outlined' value={80} determinate sx={{ my: 1 }} />
-          <Button size='sm' variant='solid'>
-            Upgrade plan
-          </Button>
-        </Card>
-      </Box>
-      <Divider />
-      <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
-        <Avatar
-          variant='outlined'
-          size='sm'
-          src='https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=286'
-        />
-        <Box sx={{ minWidth: 0, flex: 1 }}>
-          <Typography level='title-sm'>Siriwat K.</Typography>
-          <Typography level='body-xs'>siriwatk@test.com</Typography>
-        </Box>
-        <IconButton size='sm' variant='plain' color='neutral'>
-          <LogoutRounded />
-        </IconButton>
       </Box>
     </Sheet>
   )
