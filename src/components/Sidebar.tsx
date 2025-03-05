@@ -1,7 +1,7 @@
 import {
-  BrightnessAutoRounded,
   DashboardRounded,
   HomeRounded,
+  InfoOutlined,
   QuestionAnswerRounded,
   SettingsRounded,
   ShoppingCartRounded,
@@ -77,7 +77,7 @@ const Sidebar: React.FC = () => {
       />
       <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
         <IconButton variant='soft' color='primary' size='sm'>
-          <BrightnessAutoRounded />
+          <InfoOutlined />
         </IconButton>
         <Typography level='title-lg'>{t('title')}</Typography>
         {/* <ColorSchemeToggle sx={{ ml: 'auto' }} /> */}
