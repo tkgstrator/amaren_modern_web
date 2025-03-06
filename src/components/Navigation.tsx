@@ -7,7 +7,7 @@ const NavigationHeader: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ chil
   const location = useLocation()
   const { t } = useTranslation()
   const paths: string[] = location.pathname.split('/').filter((path) => path !== '')
-  const lastPath: string = paths.length === 0 ? 'board' : paths[paths.length - 1]
+  const lastPath: string = paths.length === 0 ? 'home' : paths[paths.length - 1]
 
   return (
     <Box
