@@ -36,16 +36,15 @@ const Sidebar: React.FC = () => {
   const { t } = useTranslation(['labels', 'routes'])
   return (
     <Sheet
-      className='Sidebar'
       sx={{
-        position: { xs: 'fixed', md: 'sticky' },
+        position: { xs: 'fixed', md: 'fixed' },
         transform: {
           xs: 'translateX(calc(100% * (var(--SideNavigation-slideIn, 0) - 1)))',
           md: 'none'
         },
         transition: 'transform 0.4s, width 0.4s',
-        zIndex: 10000,
-        height: '100dvh',
+        zIndex: 1000,
+        height: 'calc(100dvh)',
         width: 'var(--Sidebar-width)',
         top: 0,
         p: 2,
@@ -54,7 +53,10 @@ const Sidebar: React.FC = () => {
         flexDirection: 'column',
         gap: 2,
         borderRight: '1px solid',
-        borderColor: 'divider'
+        borderColor: 'divider',
+        backgroundColor: 'background.level1',
+        paddingTop: 'max(env(safe-area-inset-top, 0px), 16px)',
+        paddingBottom: 'max(env(safe-area-inset-bottom, 0px), 16px)'
       }}
     >
       <GlobalStyles
