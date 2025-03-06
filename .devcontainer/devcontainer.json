@@ -1,5 +1,5 @@
 {
-  "name": "アマレン",
+  "name": "amaren_web",
   "dockerComposeFile": ["docker-compose.yaml"],
   "service": "node",
   "workspaceFolder": "/home/vscode/app",
@@ -10,14 +10,14 @@
   ],
   "features": {
     "ghcr.io/devcontainers/features/git:1": {
-      "version": "2.39.0"
+      "version": "2.48.0"
     },
     "ghcr.io/devcontainers/features/common-utils:2": {
       "configureZshAsDefaultShell": true
     },
     "ghcr.io/shyim/devcontainers-features/bun:0": {},
     "ghcr.io/devcontainers/features/node:1.5.0": {
-      "version": "20.16.0"
+      "version": "22.14.0"
     },
     "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
       "moby": false,
