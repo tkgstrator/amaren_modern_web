@@ -7,14 +7,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 // https://vite.dev/config/
 export default defineConfig({
   server: {
-    host: true,
-    proxy: {
-      '/api': {
-        target: 'http://amaren.e5.valueserver.jp/Rsys/php/amalen.fetchAllData.php', // 実際のAPIサーバーのURL
-        changeOrigin: true, // オリジンをターゲットに合わせる
-        rewrite: (path) => path.replace(/^\/api/, '') // パスの書き換え（必要に応じて）
-      }
-    }
+    host: true
   },
   define: {
     'process.env.GIT_COMMIT_DATE': JSON.stringify(execSync('git log -1 --format="%cd"').toString().trim()),
