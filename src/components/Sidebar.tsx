@@ -1,15 +1,6 @@
-import {
-  DashboardRounded,
-  HomeRounded,
-  InfoOutlined,
-  QuestionAnswerRounded,
-  SettingsRounded,
-  ShoppingCartRounded,
-  SupportRounded
-} from '@mui/icons-material'
+import { EventRounded, HomeRounded, InfoOutlined, SearchRounded, SupportRounded } from '@mui/icons-material'
 import {
   Box,
-  Chip,
   GlobalStyles,
   IconButton,
   List,
@@ -20,6 +11,26 @@ import {
   Typography
 } from '@mui/joy'
 import { useTranslation } from 'react-i18next'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { RouteType } from '../enums/routes'
+
+const RouteItem: React.FC<React.HTMLAttributes<HTMLDivElement> & { to: string; nested?: boolean }> = ({
+  to,
+  nested,
+  children
+}) => {
+  const location = useLocation()
+  const naviate = useNavigate()
+  const isSelected = location.pathname === to
+
+  return (
+    <ListItem nested={nested}>
+      <ListItemButton selected={isSelected} onClick={() => naviate(to)} className='select-none'>
+        {children}
+      </ListItemButton>
+    </ListItem>
+  )
+}
 
 const Sidebar: React.FC = () => {
   const { t } = useTranslation(['labels', 'routes'])
@@ -76,7 +87,7 @@ const Sidebar: React.FC = () => {
         onClick={() => {}}
       />
       <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
-        <IconButton variant='soft' color='primary' size='sm'>
+        <IconButton color='primary' size='sm'>
           <InfoOutlined />
         </IconButton>
         <Typography level='title-lg'>{t('title')}</Typography>
@@ -99,44 +110,24 @@ const Sidebar: React.FC = () => {
             '--ListItem-radius': (theme) => theme.vars.radius.sm
           }}
         >
-          <ListItem>
-            <ListItemButton>
-              <HomeRounded />
-              <ListItemContent>
-                <Typography level='title-sm'>Home</Typography>
-              </ListItemContent>
-            </ListItemButton>
-          </ListItem>
-
-          <ListItem>
-            <ListItemButton>
-              <DashboardRounded />
-              <ListItemContent>
-                <Typography level='title-sm'>{t('search', { ns: 'routes' })}</Typography>
-              </ListItemContent>
-            </ListItemButton>
-          </ListItem>
-
-          <ListItem>
-            <ListItemButton selected>
-              <ShoppingCartRounded />
-              <ListItemContent>
-                <Typography level='title-sm'>Orders</Typography>
-              </ListItemContent>
-            </ListItemButton>
-          </ListItem>
-
-          <ListItem>
-            <ListItemButton role='menuitem' component='a' href='/joy-ui/getting-started/templates/messages/'>
-              <QuestionAnswerRounded />
-              <ListItemContent>
-                <Typography level='title-sm'>Messages</Typography>
-              </ListItemContent>
-              <Chip size='sm' color='primary' variant='solid'>
-                4
-              </Chip>
-            </ListItemButton>
-          </ListItem>
+          <RouteItem to={RouteType.ROOT}>
+            <HomeRounded />
+            <ListItemContent>
+              <Typography level='title-sm'>{t('home', { ns: 'routes' })}</Typography>
+            </ListItemContent>
+          </RouteItem>
+          <RouteItem to={RouteType.SEARCH}>
+            <SearchRounded />
+            <ListItemContent>
+              <Typography level='title-sm'>{t('search', { ns: 'routes' })}</Typography>
+            </ListItemContent>
+          </RouteItem>
+          <RouteItem to={RouteType.EVENTS}>
+            <EventRounded />
+            <ListItemContent>
+              <Typography level='title-sm'>{t('event', { ns: 'routes' })}</Typography>
+            </ListItemContent>
+          </RouteItem>
         </List>
         <List
           size='sm'
@@ -151,13 +142,9 @@ const Sidebar: React.FC = () => {
           <ListItem>
             <ListItemButton>
               <SupportRounded />
-              Support
-            </ListItemButton>
-          </ListItem>
-          <ListItem>
-            <ListItemButton>
-              <SettingsRounded />
-              Settings
+              <ListItemContent>
+                <Typography level='title-sm'>{t('support', { ns: 'routes' })}</Typography>
+              </ListItemContent>
             </ListItemButton>
           </ListItem>
         </List>

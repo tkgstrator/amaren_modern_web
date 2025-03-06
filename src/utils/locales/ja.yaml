@@ -2,4 +2,7 @@ labels:
   title: アマ連
   # search: 検索
 routes:
+  home: ホーム
   search: 検索
+  event: 大会
+  support: サポート
