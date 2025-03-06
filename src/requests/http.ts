@@ -11,12 +11,7 @@ export const request = async <S extends RequestType, T, U>(
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   schema: ZodSchema<T, any, U>
 ): Promise<T> => {
-  const url = new URL(
-    request.path,
-    import.meta.env.DEV
-      ? import.meta.env.VITE_API_URL
-      : 'http://amaren.e5.valueserver.jphttp://amaren.e5.valueserver.jp'
-  )
+  const url = new URL(request.path, import.meta.env.VITE_API_URL)
   if (request.encoding === ParameterEncoding.QUERY && request.body !== undefined) {
     url.search = new URLSearchParams(
       Object.entries(request.body).map(([key, value]) => [key, value.toString()])
@@ -35,7 +30,8 @@ export const request = async <S extends RequestType, T, U>(
     const response = await fetch(url.href, {
       method: request.method,
       headers: request.headers,
-      credentials: 'include',
+      credentials: 'same-origin',
+      // credentials: 'include',
       body:
         request.body === undefined
           ? undefined
