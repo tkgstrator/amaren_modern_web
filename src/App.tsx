@@ -1,10 +1,14 @@
-import { Box } from '@mui/joy'
 import type React from 'react'
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import Header from './components/Header'
 import Sidebar from './components/Sidebar'
+import { RouteType } from './enums/routes'
 import { Logger } from './utils/logger'
+import EventView from './views/EventView'
+import RootView from './views/RootView'
+import SearchView from './views/SearchView'
 
 const App: React.FC<React.HTMLAttributes<HTMLDivElement>> = () => {
   const { i18n } = useTranslation()
@@ -19,14 +23,16 @@ const App: React.FC<React.HTMLAttributes<HTMLDivElement>> = () => {
   }, [])
 
   return (
-    <Box
-      sx={{
-        fontFamily: 'Kosugi Maru'
-      }}
-    >
+    <Router>
       <Header />
       <Sidebar />
-    </Box>
+      <Routes>
+        <Route path={RouteType.ROOT} element={<RootView />} />
+        <Route path={RouteType.EVENTS} element={<EventView />} />
+        <Route path={RouteType.SEARCH} element={<SearchView />} />
+        <Route path={RouteType.MEMBERS} element={<div />} />
+      </Routes>
+    </Router>
   )
 }
 
