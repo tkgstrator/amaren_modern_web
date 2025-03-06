@@ -1,0 +1,17 @@
+labels:
+  title: アマ連
+  # search: 検索
+  next: 次へ
+  prev: 前へ
+routes:
+  home: ホーム
+  search: 検索
+  event: 大会
+  support: サポート
+table:
+  rank: 順位
+  name: 名前
+  prefacture: 都道府県
+  games: 対局数
+  win_rate: 勝率
+  rating: レート
