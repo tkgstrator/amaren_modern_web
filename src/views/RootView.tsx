@@ -6,7 +6,8 @@ const RootView: React.FC = () => {
     <>
       <NavigationHeader>
         <Box>
-          <Typography>ここは一般社団法人日本アマチュア将棋連盟の非公式ウェブサイトです</Typography>
+          <Typography>ここは一般社団法人日本アマチュア将棋連盟の非公式ウェブサイトです。</Typography>
+          <Typography>大会結果速報や登録者のレーティングなどを確認することができます。</Typography>
         </Box>
       </NavigationHeader>
     </>
