@@ -1,7 +1,7 @@
 import type React from 'react'
 
 const FallbackView: React.FC = () => {
-  return <></>
+  return null
 }
 
 export default FallbackView
