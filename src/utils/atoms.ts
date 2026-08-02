@@ -10,7 +10,7 @@ import { MemberQuery } from '../requests/member'
 //     return response.json()
 //   }
 // }))
-const membersAtom = atom(async (get) => {
+const membersAtom = atom(async () => {
   const members = await request(new MemberQuery(), z.array(Member))
   return members
 })

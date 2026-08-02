@@ -8,7 +8,7 @@ import type { RequestType } from './request_type'
 
 export const request = async <S extends RequestType, T, U>(
   request: S,
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  // biome-ignore lint/suspicious/noExplicitAny: 任意の値を受け取るため
   schema: ZodSchema<T, any, U>
 ): Promise<T> => {
   const url = new URL(request.path, import.meta.env.VITE_API_URL)

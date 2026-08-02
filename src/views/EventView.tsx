@@ -1,5 +1,5 @@
 const EventView: React.FC = () => {
-  return <></>
+  return null
 }
 
 export default EventView

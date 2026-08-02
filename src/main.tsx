@@ -28,7 +28,7 @@ const theme = extendTheme({
   }
 })
 
-// biome-ignore lint/style/noNonNullAssertion: <explanation>
+// biome-ignore lint/style/noNonNullAssertion: index.html に必ず存在する要素のため
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <CssVarsProvider disableTransitionOnChange theme={theme}>

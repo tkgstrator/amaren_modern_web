@@ -99,7 +99,6 @@ const TableHead: React.FC<{
         <th>{t('name')}</th>
         <th>{t('prefacture')}</th>
         {headers.map(({ field, label }) => (
-          // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
           <th key={field} onClick={() => onSort(field)} className='cursor-pointer'>
             {label}
           </th>
@@ -143,7 +142,7 @@ const SearchView: React.FC = () => {
   const [order, setOrder] = useState<'asc' | 'desc'>('desc')
 
   const members = [..._members].sort((a, b) => {
-    // @ts-ignore
+    // @ts-expect-error
     return order === 'asc' ? (a[field] > b[field] ? 1 : -1) : b[field] > a[field] ? 1 : -1
   })
 
@@ -157,15 +156,13 @@ const SearchView: React.FC = () => {
   }
 
   return (
-    <>
-      <NavigationHeader>
-        <Table size={isMobile ? 'sm' : 'md'}>
-          <TableHead onSort={handleOnSort} />
-          <TableBody members={members} pageNo={pageNo} />
-        </Table>
-        <Pagination pageNo={pageNo} maxPageNo={Math.ceil(_members.length / 100)} goTo={handleGoTo} />
-      </NavigationHeader>
-    </>
+    <NavigationHeader>
+      <Table size={isMobile ? 'sm' : 'md'}>
+        <TableHead onSort={handleOnSort} />
+        <TableBody members={members} pageNo={pageNo} />
+      </Table>
+      <Pagination pageNo={pageNo} maxPageNo={Math.ceil(_members.length / 100)} goTo={handleGoTo} />
+    </NavigationHeader>
   )
 }
 

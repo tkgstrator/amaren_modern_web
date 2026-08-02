@@ -1,5 +1,5 @@
 const RootView: React.FC = () => {
-  return <></>
+  return null
 }
 
 export default RootView
